@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<!-- Styles -->
+<style>
+    #chartdiv {
+        width: 100%;
+        height: 800px;
+    }
+</style>
+
+<!-- Resources -->
+<script src="https://cdn.amcharts.com/lib/4/core.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/charts.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/themes/dark.js"></script>
+<script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
+
+<!-- Chart code -->
+<script>
+    am4core.ready(function() {
+        // Themes begin
+        //am4core.useTheme(am4themes_dark);
+        am4core.useTheme(am4themes_animated);
+        // Themes end
+
+        var chart = am4core.create("chartdiv", am4charts.ChordDiagram);
+
+        // colors of main characters
+        chart.colors.saturation = 1;
+        chart.colors.step = 10;
+	// ------------------------------------------------
+        // MARK: manually define the colours of the items, the colours are defined using Hex code
+        var colors = {
+            PSC_2_left:am4core.color("#6d82c1"),
+            PSC_5_left:am4core.color("#ff5eff"),
+            PSC_6_left:am4core.color("#3ce8e5"),
+            PSC_7_left:am4core.color("#fffd9d"),
+            PSC_12_left:am4core.color("#e6cc65"),
+            PSC_1_right:am4core.color("#6d82c1"),
+            PSC_3_right:am4core.color("#39cbe4"),
+            PSC_5_right:am4core.color("#3ce8e5"),
+            PSC_9_right:am4core.color("#ff40aa"),
+            PSC_10_right:am4core.color("#ff5eff"),
+            PSC_12_right:am4core.color("#e6cc65"),
+            PSC_13_right:am4core.color("#fffda9"),
+            PSC_16_right:am4core.color("#23bea6"),
+            PSC_18_right:am4core.color("#ff5e97"),
+            cognition:chart.colors.next(),
+            functioning:chart.colors.next(),
+            symptoms:chart.colors.next()
+        };
+	// ------------------------------------------------
+
+	// ------------------------------------------------
+        // MARK: paste the js codes generated from jupyter notebook here
+        chart.data = [
+            // node property fields take data from data items where they are first mentioned, that's
+            // why we add empty data items at the beginning and set colors here
+            {"from":"PSC 2 left", "color":colors.PSC_2_left},
+            {"from":"PSC 5 left", "color":colors.PSC_5_left},
+            {"from":"PSC 6 left", "color":colors.PSC_6_left},
+            {"from":"PSC 7 left", "color":colors.PSC_7_left},
+            {"from":"PSC 12 left", "color":colors.PSC_12_left},
+            {"from":"PSC 1 right", "color":colors.PSC_1_right},
+            {"from":"PSC 3 right", "color":colors.PSC_3_right},
+            {"from":"PSC 5 right", "color":colors.PSC_5_right},
+            {"from":"PSC 9 right", "color":colors.PSC_9_right},
+            {"from":"PSC 10 right", "color":colors.PSC_10_right},
+            {"from":"PSC 12 right", "color":colors.PSC_12_right},
+            {"from":"PSC 13 right", "color":colors.PSC_13_right},
+            {"from":"PSC 16 right", "color":colors.PSC_16_right},
+            {"from":"PSC 18 right", "color":colors.PSC_18_right},
+            {"from":"SocCog", "color":colors.cognition},
+            {"from":"WM", "color":colors.cognition},
+            {"from":"SoP", "color":colors.cognition},
+            {"from":"VerLearn", "color":colors.cognition},
+            {"from":"Reasoning", "color":colors.cognition},
+            {"from":"Attention", "color":colors.cognition},
+            {"from":"Global", "color":colors.cognition},
+            {"from":"GF:R current", "color":colors.functioning},
+            {"from":"GF:R low past y", "color":colors.functioning},
+            {"from":"GF:R high past y", "color":colors.functioning},
+            {"from":"GF:R lifetime", "color":colors.functioning},
+            {"from":"GF:S current", "color":colors.functioning},
+            {"from":"GF:S low past y", "color":colors.functioning},
+            {"from":"GF:S high past y", "color":colors.functioning},
+            {"from":"GF:S lifetime", "color":colors.functioning},
+            {"from":"SIPS-P", "color":colors.symptoms},
+            {"from":"SIPS-N", "color":colors.symptoms},
+            {"from":"BDI", "color":colors.symptoms},
+            {"from":"PSC 18 right","to":"BDI","value":0.37979819369550816,"r_value":-0.0330252210680374},
+            {"from":"PSC 18 right","to":"SIPS-N","value":0.1701829249189407,"r_value":0.016246734786771},
+            {"from":"PSC 18 right","to":"SIPS-P","value":0.27259520026902756,"r_value":-0.0240598625809704},
+            {"from":"PSC 18 right","to":"GF:S high past y","value":0.5384144181581049,"r_value":0.0425408563787396},
+            {"from":"PSC 18 right","to":"GF:S low past y","value":0.3886774235381029,"r_value":0.0331900332791516},
+            {"from":"PSC 18 right","to":"GF:S current","value":0.36196873524270085,"r_value":0.0313884598942365},
+            {"from":"PSC 18 right","to":"GF:R lifetime","value":2.428603468710966,"r_value":0.116133804378595},
+            {"from":"PSC 18 right","to":"GF:R high past y","value":0.7118845166563459,"r_value":0.0521316889376246},
+            {"from":"PSC 18 right","to":"GF:R current","value":0.5888349386798325,"r_value":0.0454479149987486},
+            {"from":"PSC 18 right","to":"Attention","value":0.2795185437113343,"r_value":-0.0253476514233336},
+            {"from":"PSC 18 right","to":"VerLearn","value":0.22311750190170268,"r_value":0.0210660002827273},
+            {"from":"PSC 18 right","to":"WM","value":0.5884981997279123,"r_value":0.0451386321411439},
+            {"from":"PSC 18 right","to":"SocCog","value":0.5071629423800238,"r_value":-0.0403268996884286},
+            {"from":"PSC 16 right","to":"BDI","value":0.12225357679529268,"r_value":-0.0127206810955086},
+            {"from":"PSC 16 right","to":"SIPS-N","value":0.3850898159745631,"r_value":-0.0318639699824183},
+            {"from":"PSC 16 right","to":"SIPS-P","value":0.29421815745634305,"r_value":-0.0256038088401266},
+            {"from":"PSC 16 right","to":"GF:S high past y","value":1.1727784560105496,"r_value":0.0734444315655185},
+            {"from":"PSC 16 right","to":"GF:S low past y","value":0.03597859851652921,"r_value":0.00401007859252542},
+            {"from":"PSC 16 right","to":"GF:S current","value":0.011948361241885417,"r_value":0.00136674128876136},
+            {"from":"PSC 16 right","to":"GF:R lifetime","value":3.6377638672976778,"r_value":0.1471763808796},
+            {"from":"PSC 16 right","to":"GF:R high past y","value":1.4163183209788672,"r_value":0.0830699994114245},
+            {"from":"PSC 16 right","to":"GF:R current","value":0.7835546580446041,"r_value":0.0557925741062618},
+            {"from":"PSC 16 right","to":"Attention","value":0.10097002051401094,"r_value":0.0104984491260573},
+            {"from":"PSC 16 right","to":"VerLearn","value":0.1365464159807057,"r_value":-0.0137871568075996},
+            {"from":"PSC 16 right","to":"WM","value":0.10045111166048622,"r_value":0.0104493851821161},
+            {"from":"PSC 16 right","to":"SocCog","value":0.36319878520025844,"r_value":0.0311968356482257},
+            {"from":"PSC 13 right","to":"BDI","value":0.0976377281455907,"r_value":-0.0103831112885736},
+            {"from":"PSC 13 right","to":"SIPS-N","value":0.281423583965302,"r_value":-0.0248062976239965},
+            {"from":"PSC 13 right","to":"SIPS-P","value":0.535589417795308,"r_value":-0.0407935355182522},
+            {"from":"PSC 13 right","to":"GF:S high past y","value":0.5351067546985299,"r_value":0.0423463271072039},
+            {"from":"PSC 13 right","to":"GF:S low past y","value":0.6923831211003869,"r_value":0.0511077510150634},
+            {"from":"PSC 13 right","to":"GF:S current","value":0.5167390743616974,"r_value":0.0412571052396038},
+            {"from":"PSC 13 right","to":"GF:R high past y","value":0.7089365271633425,"r_value":0.0519776973761579},
+            {"from":"PSC 13 right","to":"GF:R current","value":0.2918280030915252,"r_value":0.0264213888142451},
+            {"from":"PSC 13 right","to":"Attention","value":0.009880857560297914,"r_value":0.00112561449431809},
+            {"from":"PSC 13 right","to":"VerLearn","value":0.30522073075366285,"r_value":0.0272665811194184},
+            {"from":"PSC 13 right","to":"WM","value":0.010080157870850455,"r_value":-0.00114806219444319},
+            {"from":"PSC 13 right","to":"SocCog","value":0.009930288032170286,"r_value":0.00112848853896224},
+            {"from":"PSC 12 right","to":"BDI","value":0.44388213069936955,"r_value":-0.0372600231839081},
+            {"from":"PSC 12 right","to":"SIPS-N","value":0.4754835545246155,"r_value":-0.0374747468537692},
+            {"from":"PSC 12 right","to":"SIPS-P","value":2.35795212283249,"r_value":-0.109855915490876},
+            {"from":"PSC 12 right","to":"GF:S high past y","value":1.1924356058191015,"r_value":0.0742555368860199},
+            {"from":"PSC 12 right","to":"GF:S low past y","value":1.3472548444573373,"r_value":0.0804289700654244},
+            {"from":"PSC 12 right","to":"GF:S current","value":0.40595267888748876,"r_value":0.0343314403612949},
+            {"from":"PSC 12 right","to":"GF:R lifetime","value":2.9619236543383414,"r_value":0.130646975241096},
+            {"from":"PSC 12 right","to":"GF:R high past y","value":1.3235542568152507,"r_value":0.0795073166427945},
+            {"from":"PSC 12 right","to":"GF:R low past y","value":2.3447146627902224,"r_value":0.113704109791154},
+            {"from":"PSC 12 right","to":"GF:R current","value":1.3937655487196288,"r_value":0.0822147114871606},
+            {"from":"PSC 12 right","to":"Global","value":2.6997803936102636,"r_value":0.128305782680852},
+            {"from":"PSC 12 right","to":"Attention","value":1.6600606492326435,"r_value":0.0913273657842022},
+            {"from":"PSC 12 right","to":"VerLearn","value":0.5724050472740012,"r_value":0.0442985512518219},
+            {"from":"PSC 12 right","to":"WM","value":0.8778018510701495,"r_value":0.0599993762855546},
+            {"from":"PSC 12 right","to":"SocCog","value":0.14656930026327042,"r_value":0.014618181020049},
+            {"from":"PSC 10 right","to":"BDI","value":0.47199733298844493,"r_value":0.0390441876026209},
+            {"from":"PSC 10 right","to":"SIPS-N","value":0.14727731047181988,"r_value":0.0143213561934078},
+            {"from":"PSC 10 right","to":"SIPS-P","value":0.35350194958550124,"r_value":-0.029657534446971},
+            {"from":"PSC 10 right","to":"GF:S high past y","value":0.05711020470411293,"r_value":-0.00622959194622005},
+            {"from":"PSC 10 right","to":"GF:S low past y","value":0.15865012351693586,"r_value":-0.015806852194656},
+            {"from":"PSC 10 right","to":"GF:S current","value":0.04910092619333726,"r_value":-0.00539918050629326},
+            {"from":"PSC 10 right","to":"GF:R lifetime","value":2.6690977675468788,"r_value":0.122866098136383},
+            {"from":"PSC 10 right","to":"GF:R high past y","value":0.4199933836360411,"r_value":0.0352459808270619},
+            {"from":"PSC 10 right","to":"GF:R current","value":0.07538972877512648,"r_value":-0.00807846585683484},
+            {"from":"PSC 10 right","to":"Attention","value":0.006077265508373395,"r_value":0.000695286374388665},
+            {"from":"PSC 10 right","to":"VerLearn","value":0.9638182048968541,"r_value":0.0640731420496638},
+            {"from":"PSC 10 right","to":"WM","value":2.229369728868898,"r_value":0.109587342181414},
+            {"from":"PSC 10 right","to":"SocCog","value":0.014991344343102448,"r_value":0.00169406522478541},
+            {"from":"PSC 9 right","to":"BDI","value":1.019142872817939,"r_value":-0.0677439251219534},
+            {"from":"PSC 9 right","to":"SIPS-N","value":0.5884817857048574,"r_value":-0.0439303979461259},
+            {"from":"PSC 9 right","to":"SIPS-P","value":0.13872794934415777,"r_value":0.0135247675907063},
+            {"from":"PSC 9 right","to":"GF:S high past y","value":0.5952782776143979,"r_value":0.0458118415718175},
+            {"from":"PSC 9 right","to":"GF:S low past y","value":0.11098316981767098,"r_value":0.0115105534944401},
+            {"from":"PSC 9 right","to":"GF:S current","value":0.12198338169645831,"r_value":-0.0125305222225246},
+            {"from":"PSC 9 right","to":"GF:R high past y","value":0.7795803106560855,"r_value":0.0555935789258368},
+            {"from":"PSC 9 right","to":"GF:R current","value":0.25400176678172653,"r_value":0.0235819249912234},
+            {"from":"PSC 9 right","to":"Attention","value":0.0013864296144188621,"r_value":-0.000159468401720098},
+            {"from":"PSC 9 right","to":"VerLearn","value":0.11545342111223524,"r_value":-0.011869895213636},
+            {"from":"PSC 9 right","to":"WM","value":0.020961964040718383,"r_value":0.0023589238261127},
+            {"from":"PSC 9 right","to":"SocCog","value":0.0429260424359835,"r_value":-0.00470842891936305},
+            {"from":"PSC 5 right","to":"BDI","value":0.21553078116639818,"r_value":0.0208311256022704},
+            {"from":"PSC 5 right","to":"SIPS-N","value":0.1526099703691374,"r_value":-0.0147753716919092},
+            {"from":"PSC 5 right","to":"SIPS-P","value":0.22918068036519817,"r_value":0.0208406163704364},
+            {"from":"PSC 5 right","to":"GF:S high past y","value":0.3821882423090188,"r_value":0.0327565223774175},
+            {"from":"PSC 5 right","to":"GF:S low past y","value":0.40022824328774614,"r_value":0.0339552268222388},
+            {"from":"PSC 5 right","to":"GF:S current","value":0.21334302265672628,"r_value":0.0203841904494374},
+            {"from":"PSC 5 right","to":"GF:R lifetime","value":3.1027166695787964,"r_value":0.134243529783149},
+            {"from":"PSC 5 right","to":"GF:R high past y","value":1.8033841260704124,"r_value":0.0968084893924779},
+            {"from":"PSC 5 right","to":"GF:R current","value":0.42565932557335595,"r_value":0.0356117901359517},
+            {"from":"PSC 5 right","to":"Attention","value":0.3608530147998874,"r_value":0.0311120465124998},
+            {"from":"PSC 5 right","to":"VerLearn","value":0.6979278706490185,"r_value":0.0511533589862978},
+            {"from":"PSC 5 right","to":"WM","value":1.5848734681200392,"r_value":0.088690245118264},
+            {"from":"PSC 5 right","to":"SocCog","value":0.29156274560883055,"r_value":-0.0261706525133667},
+            {"from":"PSC 3 right","to":"BDI","value":0.31349253258965104,"r_value":-0.0283631080788539},
+            {"from":"PSC 3 right","to":"SIPS-N","value":0.13579570630203705,"r_value":-0.0133314056693102},
+            {"from":"PSC 3 right","to":"SIPS-P","value":0.7885272112892251,"r_value":-0.0539510851479806},
+            {"from":"PSC 3 right","to":"GF:S high past y","value":0.19269070289697632,"r_value":-0.0186956189879659},
+            {"from":"PSC 3 right","to":"GF:S low past y","value":0.30311806759609256,"r_value":0.0272458250802574},
+            {"from":"PSC 3 right","to":"GF:S current","value":0.07973342449800712,"r_value":0.00850878182579537},
+            {"from":"PSC 3 right","to":"GF:R lifetime","value":2.3904084256571814,"r_value":0.115033058385017},
+            {"from":"PSC 3 right","to":"GF:R high past y","value":0.39305255747425916,"r_value":0.0334808322551391},
+            {"from":"PSC 3 right","to":"GF:R current","value":0.36534109932878817,"r_value":0.0316184918926159},
+            {"from":"PSC 3 right","to":"Attention","value":0.42611517769199087,"r_value":0.0354133618460292},
+            {"from":"PSC 3 right","to":"VerLearn","value":0.4651581673808274,"r_value":0.037929406825373},
+            {"from":"PSC 3 right","to":"WM","value":0.30051697004870265,"r_value":0.0268838182362438},
+            {"from":"PSC 3 right","to":"SocCog","value":0.2799211807357901,"r_value":0.0253170184917491},
+            {"from":"PSC 1 right","to":"BDI","value":0.36040822147563845,"r_value":-0.0316935122536828},
+            {"from":"PSC 1 right","to":"SIPS-N","value":0.3269899671733157,"r_value":-0.0280014195295632},
+            {"from":"PSC 1 right","to":"SIPS-P","value":1.3329489106454813,"r_value":-0.0768996188780503},
+            {"from":"PSC 1 right","to":"GF:S high past y","value":0.6971186047119566,"r_value":0.051357538854003},
+            {"from":"PSC 1 right","to":"GF:S low past y","value":0.9411241284831305,"r_value":0.0633441054862084},
+            {"from":"PSC 1 right","to":"GF:S current","value":0.674875543749558,"r_value":0.0501777341784608},
+            {"from":"PSC 1 right","to":"GF:R lifetime","value":3.1049843807775948,"r_value":0.134300744339919},
+            {"from":"PSC 1 right","to":"GF:R high past y","value":0.7688719270492416,"r_value":0.0550551370963488},
+            {"from":"PSC 1 right","to":"GF:R current","value":0.5093009364134049,"r_value":0.0408115945813004},
+            {"from":"PSC 1 right","to":"Global","value":2.5294030414129707,"r_value":0.123427724267087},
+            {"from":"PSC 1 right","to":"Attention","value":1.2349069798215917,"r_value":0.0755016412852357},
+            {"from":"PSC 1 right","to":"Reasoning","value":2.332693277760285,"r_value":0.114365536525024},
+            {"from":"PSC 1 right","to":"VerLearn","value":0.21171455620852883,"r_value":0.0201553432547547},
+            {"from":"PSC 1 right","to":"WM","value":0.8412471590044794,"r_value":0.0582573477776766},
+            {"from":"PSC 1 right","to":"SocCog","value":0.4860781658407714,"r_value":0.0390587014143712},
+            {"from":"PSC 12 left","to":"BDI","value":0.17143280219393942,"r_value":-0.0171304476993486},
+            {"from":"PSC 12 left","to":"SIPS-N","value":0.20503369672406135,"r_value":-0.0190600395521087},
+            {"from":"PSC 12 left","to":"SIPS-P","value":1.6650046532565375,"r_value":-0.0886597992607315},
+            {"from":"PSC 12 left","to":"GF:S lifetime","value":2.9651332855871653,"r_value":0.130729959371202},
+            {"from":"PSC 12 left","to":"GF:S high past y","value":1.14423218187342,"r_value":0.0722547539879253},
+            {"from":"PSC 12 left","to":"GF:S low past y","value":0.08138606098449608,"r_value":0.00867162742207119},
+            {"from":"PSC 12 left","to":"GF:S current","value":0.09605933502636824,"r_value":0.0100969723239091},
+            {"from":"PSC 12 left","to":"GF:R lifetime","value":3.6249605097121624,"r_value":0.146879218406394},
+            {"from":"PSC 12 left","to":"GF:R high past y","value":1.0043990740181556,"r_value":0.066209902393273},
+            {"from":"PSC 12 left","to":"GF:R current","value":0.5561306321456289,"r_value":0.0435745919907407},
+            {"from":"PSC 12 left","to":"Global","value":2.0666082189109503,"r_value":0.109237227983891},
+            {"from":"PSC 12 left","to":"Attention","value":0.9714342477001451,"r_value":0.0643147237499559},
+            {"from":"PSC 12 left","to":"VerLearn","value":0.22635065429872198,"r_value":-0.0213218195728515},
+            {"from":"PSC 12 left","to":"SoP","value":2.616794000281792,"r_value":0.122215641438737},
+            {"from":"PSC 12 left","to":"WM","value":1.0407540098198178,"r_value":0.067385384609459},
+            {"from":"PSC 12 left","to":"SocCog","value":0.09353593096491988,"r_value":0.00976808625343604},
+            {"from":"PSC 7 left","to":"BDI","value":0.29326005293003776,"r_value":0.0268757360591988},
+            {"from":"PSC 7 left","to":"SIPS-N","value":0.30285748331783635,"r_value":0.026328814791041},
+            {"from":"PSC 7 left","to":"SIPS-P","value":0.36580635832980624,"r_value":-0.0304687026518595},
+            {"from":"PSC 7 left","to":"GF:S high past y","value":0.08627236263257711,"r_value":0.00915033147163358},
+            {"from":"PSC 7 left","to":"GF:S low past y","value":0.25961071316867856,"r_value":-0.0240108162509515},
+            {"from":"PSC 7 left","to":"GF:S current","value":0.2251197569491443,"r_value":-0.0213270599944975},
+            {"from":"PSC 7 left","to":"GF:R high past y","value":0.6143358170913257,"r_value":0.0468786704827916},
+            {"from":"PSC 7 left","to":"GF:R current","value":0.4011137426360275,"r_value":0.034013551334242},
+            {"from":"PSC 7 left","to":"Attention","value":0.3749645169148822,"r_value":-0.0320645393968713},
+            {"from":"PSC 7 left","to":"VerLearn","value":0.26794947900183047,"r_value":0.024524826832513},
+            {"from":"PSC 7 left","to":"WM","value":0.2922653521324947,"r_value":0.0262844052731797},
+            {"from":"PSC 7 left","to":"SocCog","value":0.6531956506156446,"r_value":-0.0485825665405327},
+            {"from":"PSC 6 left","to":"BDI","value":0.07217004505319788,"r_value":0.00785947409166418},
+            {"from":"PSC 6 left","to":"SIPS-N","value":0.4390588732892757,"r_value":-0.0352670430408205},
+            {"from":"PSC 6 left","to":"SIPS-P","value":0.16618151318467422,"r_value":-0.0158433911320557},
+            {"from":"PSC 6 left","to":"GF:S high past y","value":0.4054444868363808,"r_value":0.0342981211400248},
+            {"from":"PSC 6 left","to":"GF:S low past y","value":0.004558473295177339,"r_value":-0.000525786509882109},
+            {"from":"PSC 6 left","to":"GF:S current","value":0.1819526856882451,"r_value":0.0177990866208635},
+            {"from":"PSC 6 left","to":"GF:R lifetime","value":4.965791097843383,"r_value":0.175411518029231},
+            {"from":"PSC 6 left","to":"GF:R high past y","value":1.916579725942733,"r_value":0.100536888417704},
+            {"from":"PSC 6 left","to":"GF:R current","value":0.916424859496525,"r_value":0.0622011308822516},
+            {"from":"PSC 6 left","to":"Attention","value":0.5544500623610666,"r_value":0.0431993424769688},
+            {"from":"PSC 6 left","to":"VerLearn","value":0.7759952054690448,"r_value":0.0551476758521981},
+            {"from":"PSC 6 left","to":"WM","value":1.2183666815415988,"r_value":0.0748353926068625},
+            {"from":"PSC 6 left","to":"SocCog","value":0.050901273764858784,"r_value":0.00553801511364441},
+            {"from":"PSC 5 left","to":"BDI","value":0.2454718666823076,"r_value":0.0232260013640736},
+            {"from":"PSC 5 left","to":"SIPS-N","value":0.011448693743155386,"r_value":0.00126707872579206},
+            {"from":"PSC 5 left","to":"SIPS-P","value":0.17357631918780098,"r_value":-0.0164523014438249},
+            {"from":"PSC 5 left","to":"GF:S high past y","value":0.2195138835819976,"r_value":0.0208800006753217},
+            {"from":"PSC 5 left","to":"GF:S low past y","value":0.3597009936705233,"r_value":-0.0312333491767366},
+            {"from":"PSC 5 left","to":"GF:S current","value":0.06732851450204701,"r_value":-0.00727083300217258},
+            {"from":"PSC 5 left","to":"GF:R lifetime","value":3.4006574008764456,"r_value":0.141579469196279},
+            {"from":"PSC 5 left","to":"GF:R high past y","value":1.2683978469522852,"r_value":0.0773305445022477},
+            {"from":"PSC 5 left","to":"GF:R current","value":1.4202012588817365,"r_value":0.0832165728529952},
+            {"from":"PSC 5 left","to":"Attention","value":1.3248150746638563,"r_value":0.0790493885560535},
+            {"from":"PSC 5 left","to":"VerLearn","value":0.9607706577843429,"r_value":0.0639350917283852},
+            {"from":"PSC 5 left","to":"WM","value":0.8677094073828354,"r_value":0.0595217916485553},
+            {"from":"PSC 5 left","to":"SocCog","value":0.09494719958621918,"r_value":-0.00990267685369531},
+            {"from":"PSC 2 left","to":"BDI","value":0.1800954019498891,"r_value":-0.0178749834573317},
+            {"from":"PSC 2 left","to":"SIPS-N","value":0.28319250512394467,"r_value":-0.0249333222679906},
+            {"from":"PSC 2 left","to":"SIPS-P","value":1.4039130425202089,"r_value":-0.0795255110970576},
+            {"from":"PSC 2 left","to":"GF:S high past y","value":0.9204654437163813,"r_value":0.0623890814560722},
+            {"from":"PSC 2 left","to":"GF:S low past y","value":0.2642665934207893,"r_value":0.0243646959288136},
+            {"from":"PSC 2 left","to":"GF:S current","value":0.16499379583267804,"r_value":0.0163557472371376},
+            {"from":"PSC 2 left","to":"GF:R lifetime","value":2.8183251068314057,"r_value":0.126884529699169},
+            {"from":"PSC 2 left","to":"GF:R high past y","value":0.8772718419118137,"r_value":0.0603596579192724},
+            {"from":"PSC 2 left","to":"GF:R current","value":0.9744900134616189,"r_value":0.0648661653712893},
+            {"from":"PSC 2 left","to":"Global","value":2.644196948110047,"r_value":0.12673261349434},
+            {"from":"PSC 2 left","to":"Attention","value":0.734967103015773,"r_value":0.0529873254797975},
+            {"from":"PSC 2 left","to":"Reasoning","value":3.0759047992413753,"r_value":0.134756284913924},
+            {"from":"PSC 2 left","to":"VerLearn","value":0.31203133667065147,"r_value":0.0277555945180111},
+            {"from":"PSC 2 left","to":"SoP","value":2.4514305821423377,"r_value":0.117543546768473},
+            {"from":"PSC 2 left","to":"WM","value":1.2959515547991654,"r_value":0.0779236547415401},
+            {"from":"PSC 2 left","to":"SocCog","value":0.33376717219980734,"r_value":0.0291766738812143}
+        ];
+	// ------------------------------------------------
+
+        chart.dataFields.fromName = "from";
+        chart.dataFields.toName = "to";
+        chart.dataFields.value = "value";
+
+        chart.nodePadding = 0.5;
+        chart.minNodeSize = 0.01;
+        chart.startAngle = 80;
+        chart.endAngle = chart.startAngle + 360;
+        //chart.sortBy = "value";
+        chart.fontSize = 14;
+
+        var nodeTemplate = chart.nodes.template;
+        nodeTemplate.fontFamily = 'Arial';
+        nodeTemplate.readerTitle = "Click to show/hide or drag to rearrange";
+        nodeTemplate.showSystemTooltip = true;
+        nodeTemplate.propertyFields.fill = "color";
+        nodeTemplate.tooltipText = "{name}";
+
+        // when rolled over the node, make all the links rolled-over
+        nodeTemplate.events.on("over", function(event) {
+            var node = event.target;
+            node.outgoingDataItems.each(function(dataItem) {
+                if(dataItem.toNode){
+                    dataItem.link.isHover = true;
+                    dataItem.toNode.label.isHover = true;
+                }
+            });
+            node.incomingDataItems.each(function(dataItem) {
+                if(dataItem.fromNode){
+                    dataItem.link.isHover = true;
+                    dataItem.fromNode.label.isHover = true;
+                }
+            });
+            node.label.isHover = true;
+        });
+
+        // when rolled out from the node, make all the links rolled-out
+        nodeTemplate.events.on("out", function(event) {
+            var node = event.target;
+            node.outgoingDataItems.each(function(dataItem) {
+                if(dataItem.toNode){
+                    dataItem.link.isHover = false;
+                    dataItem.toNode.label.isHover = false;
+                }
+            });
+            node.incomingDataItems.each(function(dataItem) {
+                if(dataItem.fromNode){
+                    dataItem.link.isHover = false;
+                    dataItem.fromNode.label.isHover = false;
+                }
+            });
+            node.label.isHover = false;
+        });
+
+        var label = nodeTemplate.label;
+        label.relativeRotation = 90;
+        label.fillOpacity = 1;
+        let labelHS = label.states.create("hover");
+        labelHS.properties.fillOpacity = 1;
+
+        nodeTemplate.cursorOverStyle = am4core.MouseCursorStyle.pointer;
+        // this adapter makes non-main character nodes to be filled with color of the main character which he/she kissed most
+        nodeTemplate.adapter.add("fill", function(fill, target) {
+            let node = target;
+            let counters = {};
+            let mainChar = false;
+            node.incomingDataItems.each(function(dataItem) {
+                if(colors[dataItem.toName]){
+                    mainChar = true;
+                }
+
+                if(isNaN(counters[dataItem.fromName])){
+                    counters[dataItem.fromName] = dataItem.value;
+                }
+                else{
+                    counters[dataItem.fromName] += dataItem.value;
+                }
+            });
+            if(mainChar){
+                return fill;
+            }
+
+            let count = 0;
+            let color;
+            let biggest = 0;
+            let biggestName;
+
+            for(var name in counters){
+                if(counters[name] > biggest){
+                    biggestName = name;
+                    biggest = counters[name];
+                }
+            }
+            if(colors[biggestName]){
+                fill = colors[biggestName];
+            }
+            return fill;
+        });
+
+        // link template
+        var linkTemplate = chart.links.template;
+        linkTemplate.strokeOpacity = 0;
+        linkTemplate.fillOpacity = 0.7;
+        linkTemplate.tooltipText = "{fromName} & {toName} R-value:{r_value}";
+        linkTemplate.tooltipText.font = 'Arial';
+
+        var hoverState = linkTemplate.states.create("hover");
+        hoverState.properties.fillOpacity = 0.7;
+        hoverState.properties.strokeOpacity = 0.7;
+    }); // end am4core.ready()
+</script>
+
+<!-- HTML -->
+<body style="background-color: white;">
+<div id="chartdiv"></div>
+</body>
